@@ -9,3 +9,5 @@ Figma UI/UX: https://www.figma.com/design/b9ziJh3Z86k0hQmtMcYUZv/42ADxMOI?node-i
 </br>
 Firestore Database: https://console.firebase.google.com/u/2/project/adxmoi/settings/general
 </br>
+Notion Page Content: https://jinxiuyao.notion.site/42ADxMOI-3d57971b237640019a950e167d04f626?pvs=4
+</br>
