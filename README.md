@@ -1,13 +1,57 @@
 # 42ADxMOI
-This is a submission for the hackathon by the Ministry of Interior UAE
 
-Miro Mindmap: https://miro.com/app/board/uXjVKJlP0l0=/?share_link_id=502698747089
+&emsp;> This is a joint hackathon by 42 Abu Dhabi and the Ministry of Interior UAE.
 </br>
-Asana Requirements: https://app.asana.com/0/1207285241425320/1207285241425320
+&emsp;> 42ADxMOI aims to better UX in an all-inclusive way (i.e. for People of Determination) through gamification.
 </br>
-Figma UI/UX: https://www.figma.com/design/b9ziJh3Z86k0hQmtMcYUZv/42ADxMOI?node-id=0%3A1&t=P6qrGz1meW3CNB9l-1
-</br>
-Firestore Database: https://console.firebase.google.com/u/2/project/adxmoi/settings/general
-</br>
-Notion Page Content: https://jinxiuyao.notion.site/42ADxMOI-3d57971b237640019a950e167d04f626?pvs=4
-</br>
+&emsp;> We entered as "Team Kudos", which consisted Mukhammadusmon Ganiev, Faraz Khan and I (Jinxiu Yao).
+
+
+## Description
+
+Problems Identified:
+
+Solutions Suggested:
+
+Sources to Our Work:
+* <a href="https://miro.com/app/board/uXjVKJlP0l0=/?share_link_id=502698747089" target="_blank">Miro Mindmap</a>
+* <a href="https://app.asana.com/0/1207285241425320/1207285241425320" target="_blank">Asana Requirements</a>
+* <a href="https://www.figma.com/design/b9ziJh3Z86k0hQmtMcYUZv/42ADxMOI?node-id=0%3A1&t=P6qrGz1meW3CNB9l-1" target="_blank">Figma UI/UX</a>
+* <a href="https://jinxiuyao.notion.site/42ADxMOI-3d57971b237640019a950e167d04f626?pvs=4" target="_blank">Notion Page Content</a>
+
+
+## Getting Started
+
+### Dependencies
+
+* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
+* ex. Windows 10
+
+### Installing
+
+* How/where to download your program
+* Any modifications needed to be made to files/folders
+
+### Executing program
+
+* How to run the program
+* Step-by-step bullets
+```
+code blocks for commands
+```
+
+## Help
+
+Any advise for common problems or issues.
+```
+command to run if program contains helper info
+```
+
+## Authors
+- [Mukhammadusman Ganiev](https://github.com/muhammadganiev)
+- [Faraz Khan](https://github.com/Faraz7704)
+- [Jinxiu Yao](https://github.com/jya0)
+
+## License
+
+Following this submission, all IP rightfully belongs to MOI UAE.
