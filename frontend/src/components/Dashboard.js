@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Dashboard.css';
-import { Badge, Button } from '@mui/material';
+import { Badge, Button,Typography  } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import BadgeItem from './BadgeItem';
@@ -16,9 +16,11 @@ import { ReactComponent as SilverTongue } from '../images/icons/SilverTongue_ico
 import { ReactComponent as TheFlash } from '../images/icons/TheFlash_icon.svg';
 import { ReactComponent as SafetySavvy } from '../images/icons/SafetySavvy_icon.svg';
 import { ReactComponent as WhiteGold } from '../images/icons/WhiteGold_icon.svg';
+
+
 function Dashboard() {
   const user = {
-    name: "John Doe",
+    name: "Muhammad Al Mansoori",
     avatarUrl: "https://mui.com/static/images/avatar/1.jpg",
     level: 9,
     currentXP: 4675,
@@ -26,7 +28,7 @@ function Dashboard() {
   };
   const league = {
     name: "Platinum",
-    Color: "#716991", // Default color
+    Color: "#716991", 
     cashback:"5%"
   };
 
@@ -44,6 +46,9 @@ function Dashboard() {
         </div>
         <div className="grid-item item4">4</div>
         <div className="grid-item item5">
+            <Typography variant="h5" marginBottom="10px" sx={{ fontWeight: 'bold',color: '#B68A36' }}>
+            Badges
+            </Typography>
             <div className="grid-container-badges">
                 <BadgeItem color="#D59AFB" icon={Rookie} text="Rookie" />
                 <BadgeItem color="#FFE244" icon={EarlyBird} text="Early bird" />
