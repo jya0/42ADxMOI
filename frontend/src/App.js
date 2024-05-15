@@ -1,45 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
+import{BrowserRouter,Switch,Route}from 'react-router-dom' 
 import "./App.css";
 import Header from "./components/Header.js";
-import Dashboard from "./components/Dashboard.js";
-import Services from "./components/Services.js";
-import Call from "./images/call.svg";
-import Picture from "./images/picture.png";
-import Kudos from "./components/Kudos.js";
-
+import Home from "./pages/Home.js";
+import Profile from "./pages/Profile.js";
+import Payment from "./pages/Payment.js";
 
 function App() {
-  const [isPictureVisible, setIsPictureVisible] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsPictureVisible(!isPictureVisible);
-  };
-
-  const handlePictureClick = () => {
-    setIsPictureVisible(false);
-  };
-
   return (
-    <div className="App">
-      <div className="mainContainer">
-        <Header />
-        <Dashboard />
-        <Kudos />
-        <Services />
+    <BrowserRouter>
+      <div className="App">
+        <div className="mainContainer">
+          <Header />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/payment" component={Payment} />
+          </Switch>
+        </div>
       </div>
-      <button className="call" onClick={handleButtonClick}>
-        <img src={Call} alt="call icon" width="40" height="40" />
-      </button>
-      {isPictureVisible && (
-        <img
-          className="call-picture"
-          src={Picture}
-          alt="Displayed when button is clicked"
-          onClick={handlePictureClick}
-          style={{ cursor: "pointer" }}
-        />
-      )}
-    </div>
+    </BrowserRouter>
   );
 }
 

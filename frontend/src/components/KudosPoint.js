@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import ThunderIcon from '@mui/icons-material/FlashOn'; // Energy/thunder icon
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 // import '../styles/KudosPoint.css';
 
 const abbreviateNumber = (number) => {
@@ -33,7 +33,7 @@ const KudosPoint = ({ WalletPoints }) => {
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <ThunderIcon sx={{ fontSize: 25, color: '#B68A36' }} />
+        <MonetizationOnIcon sx={{ fontSize: 25, color: '#B68A36',marginRight: '4px' }} />
         <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#B68A36' }}>
           {formattedWalletPoints} 
         </Typography>

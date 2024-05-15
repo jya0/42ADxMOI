@@ -8,7 +8,7 @@
 
 .App-content {
   background-color: white;
-  max-width: 80%;
+  max-width: 100%;
   display: flex;
   text-align: center;
   justify-content: center;
@@ -34,7 +34,7 @@
 
 .call-picture {
   position: fixed;
-  left: -7%;
+  left: -6%;
   bottom: 0;
   top: 0;
   width: 40%;

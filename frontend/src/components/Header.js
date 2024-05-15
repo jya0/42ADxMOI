@@ -1,7 +1,9 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
+import { Link } from "react-router-dom";
 import moiLogo from "../images/moiLogo.png";
 import rightHeader from "../images/rightHeader.png";
+
 import "../styles/Header.css";
 
 function Header() {
@@ -9,11 +11,13 @@ function Header() {
     <Stack direction="row" spacing={2} className="App-header">
       <img src={moiLogo} className="header-img" alt="logo" />
       <Stack direction="row" spacing={2} className="App-header-text">
-        <a href="/">My Profile</a>
+        <Link to="/">Home</Link>
         <p>|</p>
-        <a href="/">Sign Out</a>
+        <Link to="/profile">Profile</Link>
         <p>|</p>
-        <a href="/">Advance Search</a>
+        <a href="/">Sign Out</a> {/* If this is a sign-out link, you may not need to use React Router */}
+        <p>|</p>
+        <Link to="/advance-search">Advance Search</Link>
       </Stack>
       <img src={rightHeader} className="header-img" alt="info" />
     </Stack>
