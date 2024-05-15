@@ -23,7 +23,6 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
-
 }
 .grid-container-home,
 .grid-container-profile {
@@ -62,14 +61,6 @@
   padding: 10px 10px 0;
   height: 100%;
 }
-
-.chart-div > p {
-  margin: 0;
-  text-align: center;
-  font-size: 14px;
-  color: #b68a36;
-}
-
 .item1 {
   grid-area: item1;
 }

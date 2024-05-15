@@ -22,13 +22,16 @@ import { ReactComponent as WhiteGold } from '../images/icons/WhiteGold_icon.svg'
 import Transactions from '../images/Transactions.svg';
 import Statistics from '../images/Statistics.svg';
 import PendingPaymentState1 from '../images/PendingPaymentState1.svg';
+import PendingPaymentState2 from "../images/PendingPaymentState2.svg";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   const location = useLocation();
 
   const user = {
     name: "Muhammad Al Mansoori",
-    avatarUrl: "https://cdn3d.iconscout.com/3d/premium/thumb/middle-eastern-arab-man-avatar-10971672-8779384.png?f=webp",
+    avatarUrl:
+      "https://cdn3d.iconscout.com/3d/premium/thumb/middle-eastern-arab-man-avatar-10971672-8779384.png?f=webp",
     level: 9,
     currentXP: 4675,
     walletPoint: 290000,
@@ -135,7 +138,10 @@ function Dashboard() {
               <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#B68A36', marginBottom: '10px' }}>
                 Total: {payments.total} AED
               </Typography>
-              <Button className="grid-item item10" variant="outlined" sx={{
+              <Button 
+                component={Link}
+                to="/payments" 
+                className="grid-item item10" variant="outlined" sx={{
                 borderColor: "#B68A36",
                 color: "#B68A36",
                 borderRadius: '15px',
@@ -171,28 +177,32 @@ function Dashboard() {
               <Typography variant="h7" sx={{ fontWeight: 'bold', color: '#B68A36', marginBottom:'5px'}}>
                 Total: {payments.total} AED
               </Typography>
-              <Button className="grid-item item10" variant="outlined" sx={{
-                borderColor: "#B68A36",
-                color: "#B68A36",
-                borderRadius: '15px',
-                '&:hover': {
-                  backgroundColor: 'rgb(182, 138, 54)',
-                  color: "#fff",
+              <Button
+                component={Link}
+                to="/payments"
+                className="grid-item item10"
+                variant="outlined"
+                sx={{
                   borderColor: "#B68A36",
-                  '& .offer-icon': {
-                    color: "#fff", // Change icon color to white on hover
+                  color: "#B68A36",
+                  borderRadius: "15px",
+                  "&:hover": {
+                    backgroundColor: "rgb(182, 138, 54)",
+                    color: "#fff",
+                    borderColor: "#B68A36",
+                    "& .offer-icon": {
+                      color: "#fff", // Change icon color to white on hover
+                    },
                   },
-                },
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '10px 20px',
-                fontSize: '16px', // Responsive font size
-                textTransform: 'uppercase',
-                fontWeight: '700',
-                width: '80%',
-                height: '15%',
-              }}>
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "0px 15px",
+                  fontSize: "clamp(14px, 20px)", // Responsive font size
+                  textTransform: "uppercase",
+                  fontWeight: "700",
+                }}
+              >
                 <span>PAY</span>
               </Button>
               </div>
@@ -209,8 +219,8 @@ function Dashboard() {
             <NotificationsIcon sx={{ color: "#B68A36", fontSize: 40 }} />
           </Badge>
         </div>
+        </div>
       </div>
-    </div>
   );
 }
 
