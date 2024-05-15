@@ -20,8 +20,8 @@ function Home() {
   return (
     <div>
         <Dashboard />
-        <Kudos />
         <Services />
+        <Kudos />
       <button className="call" onClick={handleButtonClick}>
         <img src={Call} alt="call icon" width="40" height="40" />
       </button>
