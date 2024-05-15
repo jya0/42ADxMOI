@@ -1,5 +1,5 @@
 import React from "react";
-import{BrowserRouter,Switch,Route}from 'react-router-dom' 
+import{BrowserRouter,Routes,Route}from 'react-router-dom' 
 import "./App.css";
 import Header from "./components/Header.js";
 import Home from "./pages/Home.js";
@@ -8,18 +8,18 @@ import Payment from "./pages/Payment.js";
 
 function App() {
   return (
-    <BrowserRouter>
       <div className="App">
         <div className="mainContainer">
-          <Header />
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/payment" component={Payment} />
-          </Switch>
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/payment" element={<Payment />} />
+            </Routes>
+          </BrowserRouter>
         </div>
       </div>
-    </BrowserRouter>
   );
 }
 
