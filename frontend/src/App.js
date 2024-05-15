@@ -4,12 +4,20 @@ import './App.css';
 import QuickDashboard from './components/QuickDashboard';
 import Stack from '@mui/material/Stack';
 
+import React from 'react';
+import './App.css';
+import Header from './components/Header.js';
+import Dashboard from './components/Dashboard.js';
+import Services from './components/Services.js';
+
 function App() {
   return (
     <div className="App">
-      {/* <div className="App-content">
-
-      </div> */}
+      <div className='mainContainer'>
+        <Header />
+        <Dashboard />
+        <Services />
+      </div>
     </div>
   );
 }

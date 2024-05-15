@@ -1,0 +1,14 @@
+.current-xp {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .current-xp .MuiTypography-h5 {
+    font-size: clamp(16px, 5vw, 24px); /* Responsive font size */
+  }
+  
+  .current-xp .MuiTypography-body2 {
+    font-size: clamp(10px, 2.5vw, 14px); /* Responsive font size */
+  }
+  
