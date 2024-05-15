@@ -17,7 +17,7 @@ const LeagueCard = ({ league }) => {
         marginLeft: 2,
         width: '100%',
         backgroundColor: 'none',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
       }}
     >
     <Box sx={{ display: 'flex', alignItems: 'center' }}>

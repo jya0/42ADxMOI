@@ -1,6 +1,7 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import '../styles/Dashboard.css';
-import { Badge, Button,Typography} from '@mui/material';
+import { Badge, Button, Typography } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import BadgeItem from './BadgeItem';
@@ -21,22 +22,22 @@ import { ReactComponent as WhiteGold } from '../images/icons/WhiteGold_icon.svg'
 import Transactions from '../images/Transactions.svg';
 import Statistics from '../images/Statistics.svg';
 import PendingPaymentState1 from '../images/PendingPaymentState1.svg';
-import PendingPaymentState2 from '../images/PendingPaymentState2.svg';
-
 
 function Dashboard() {
+  const location = useLocation();
+
   const user = {
     name: "Muhammad Al Mansoori",
     avatarUrl: "https://cdn3d.iconscout.com/3d/premium/thumb/middle-eastern-arab-man-avatar-10971672-8779384.png?f=webp",
     level: 9,
     currentXP: 4675,
     walletPoint: 290000,
-    totalXP: 10000
+    totalXP: 10000,
   };
   const league = {
     name: "Platinum",
-    Color: "#716991", 
-    cashback:"5%"
+    Color: "#716991",
+    cashback: "5%",
   };
   const payments = {
     total: "290",
@@ -49,32 +50,30 @@ function Dashboard() {
     { name: 'Thu', xp: 800 },
     { name: 'Fri', xp: 600 },
     { name: 'Sat', xp: 1000 },
-    { name: 'Sun', xp: user.currentXP - (500 + 700 + 900 + 800 + 600 + 1000) }
+    { name: 'Sun', xp: user.currentXP - (500 + 700 + 900 + 800 + 600 + 1000) },
   ];
+
+  const isProfilePage = location.pathname === '/profile';
 
   return (
     <div className="Dashboard">
-      <div className="grid-container">
+      <div className={isProfilePage ? 'grid-container-profile' : 'grid-container-home'}>
         <div className="grid-item item1">
-            <UserCard user={user} />
+          <UserCard user={user} />
         </div>
-        <div className="grid-item item2">
-            <CurrentXp currentXP={user.currentXP} />
-        </div>
-        <div className="grid-item item3">
-            <LeagueCard league={league} />
-        </div>
-        <div className="grid-item item4">
-            <div className='chart-div'>
+        {isProfilePage && (
+          <>
+            <div className="grid-item item4">
+              <div className='chart-div'>
                 <p>XP Over the Week</p>
                 <XpChart data={xpData} />
+              </div>
             </div>
-        </div>
-        <div className="grid-item item5">
-            <Typography variant="h6"  sx={{ fontWeight: 'bold',color: '#B68A36',paddingBottom:'10px' }}>
+            <div className="grid-item item5">
+              <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#B68A36', paddingBottom: '10px' }}>
                 Badges
-            </Typography>
-            <div className="grid-container-badges">
+              </Typography>
+              <div className="grid-container-badges">
                 <BadgeItem color="#D59AFB" icon={Rookie} text="Rookie" />
                 <BadgeItem color="#FFE244" icon={EarlyBird} text="Early bird" />
                 <BadgeItem color="#636DFF" icon={Bureaucrat} text="Bureaucrat" />
@@ -84,83 +83,131 @@ function Dashboard() {
                 <BadgeItem color="#4CDAE5" icon={DigitalCitizen} text="Digital Citizen" />
                 <BadgeItem color="#F7C0FF" icon={Banker} text="Banker" />
                 <BadgeItem color="#BCCE55" icon={WhiteGold} text="White Gold" />
+              </div>
             </div>
+            <div className="grid-item item6">
+              <img src={Statistics} width='100%' alt="Statistics" />
+            </div>
+            <Button className="grid-item item10" variant="outlined" sx={{
+              borderColor: "#B68A36",
+              color: "#B68A36",
+              borderRadius: '15px',
+              '&:hover': {
+                backgroundColor: 'rgb(182, 138, 54)',
+                color: "#fff",
+                borderColor: "#B68A36",
+                '& .offer-icon': {
+                  color: "#fff", // Change icon color to white on hover
+                },
+              },
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'left',
+              padding: '10px 20px',
+              fontSize: 'clamp(16px, 5vw, 24px)', // Responsive font size
+              textTransform: 'uppercase',
+              fontWeight: '700',
+            }}>
+              <LocalOfferIcon sx={{ color: "#B68A36", fontSize: 40 }} className="offer-icon" />
+              <span>Redeem kudos</span>
+            </Button>
+            <div className="grid-item item11">
+              <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#B68A36' }}>
+                Transactions
+              </Typography>
+              <img src={Transactions} height='100%' alt="Transactions" />
+            </div>
+          </>
+        )}
+        <div className="grid-item item2">
+              <CurrentXp currentXP={user.currentXP} />
         </div>
-        <div className="grid-item item6">
-            <img src={Statistics} width='100%'></img>
+        <div className="grid-item item3">
+          <LeagueCard league={league} />
         </div>
         <div className="grid-item item7">
-            <Typography variant="h6"  sx={{ fontWeight: 'bold',color: '#B68A36', marginBottom:'10px' }}>
-            Pending Payments
-            </Typography>
-            <img src={PendingPaymentState1} width='90%'></img>
-            <Typography variant="h6"  sx={{ fontWeight: 'bold',color: '#B68A36', marginBottom:'10px'}}>
-            Total: {payments.total} AED
-            </Typography>
-
-            <Button className="grid-item item10" variant="outlined" sx={{ 
-            borderColor: "#B68A36", 
-            color: "#B68A36",
-            borderRadius: '15px',
-            '&:hover': {
-              backgroundColor: 'rgb(182, 138, 54)',
-              color: "#fff",
-              borderColor: "#B68A36",
-              '& .offer-icon': {
-                color: "#fff", // Change icon color to white on hover
-              },
-            },
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '10px 20px',
-            fontSize: 'clamp(16px, 5vw, 24px)', // Responsive font size
-            textTransform: 'uppercase',
-            fontWeight: '700',
-            width: '50%',
-            height: '15%',
-          }}>
-            <span>PAY</span>
-        </Button>  
-        
+          {isProfilePage ? (
+            <>
+              <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#B68A36', marginBottom: '10px' }}>
+                Pending Payments
+              </Typography>
+              <img src={PendingPaymentState1} width='90%' alt="Pending Payments" />
+              <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#B68A36', marginBottom: '10px' }}>
+                Total: {payments.total} AED
+              </Typography>
+              <Button className="grid-item item10" variant="outlined" sx={{
+                borderColor: "#B68A36",
+                color: "#B68A36",
+                borderRadius: '15px',
+                '&:hover': {
+                  backgroundColor: 'rgb(182, 138, 54)',
+                  color: "#fff",
+                  borderColor: "#B68A36",
+                  '& .offer-icon': {
+                    color: "#fff", // Change icon color to white on hover
+                  },
+                },
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '10px 20px',
+                fontSize: 'clamp(16px, 5vw, 24px)', // Responsive font size
+                textTransform: 'uppercase',
+                fontWeight: '700',
+                width: '50%',
+                height: '15%',
+              }}>
+                <span>PAY</span>
+              </Button>
+            </>
+          ) : (
+            <>
+              <div className='hompage-item7-horizontal'>
+              <img src={PendingPaymentState1} width='60%' alt="Pending Payments" />
+              <div className='hompage-item7-content'>
+              <Typography variant="h7" sx={{ fontWeight: 'bold', color: '#B68A36', marginBottom:'5px'}}>
+                Pending Payments
+              </Typography>
+              <Typography variant="h7" sx={{ fontWeight: 'bold', color: '#B68A36', marginBottom:'5px'}}>
+                Total: {payments.total} AED
+              </Typography>
+              <Button className="grid-item item10" variant="outlined" sx={{
+                borderColor: "#B68A36",
+                color: "#B68A36",
+                borderRadius: '15px',
+                '&:hover': {
+                  backgroundColor: 'rgb(182, 138, 54)',
+                  color: "#fff",
+                  borderColor: "#B68A36",
+                  '& .offer-icon': {
+                    color: "#fff", // Change icon color to white on hover
+                  },
+                },
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '10px 20px',
+                fontSize: '16px', // Responsive font size
+                textTransform: 'uppercase',
+                fontWeight: '700',
+                width: '80%',
+                height: '15%',
+              }}>
+                <span>PAY</span>
+              </Button>
+              </div>
+              </div>
+              
+            </>
+          )}
         </div>
         <div className="grid-item item8">
-            <KudosPoint WalletPoints={user.walletPoint} />
+          <KudosPoint WalletPoints={user.walletPoint} />
         </div>
         <div className="grid-item item9">
-          <Badge badgeContent={4} sx={{ "& .MuiBadge-badge": { backgroundColor: "#B68A36", color: "#fff",fontWeight:"bold" } }}>
+          <Badge badgeContent={4} sx={{ "& .MuiBadge-badge": { backgroundColor: "#B68A36", color: "#fff", fontWeight: "bold" } }}>
             <NotificationsIcon sx={{ color: "#B68A36", fontSize: 40 }} />
           </Badge>
-        </div>
-        <Button className="grid-item item10" variant="outlined" sx={{ 
-            borderColor: "#B68A36", 
-            color: "#B68A36",
-            borderRadius: '15px',
-            '&:hover': {
-              backgroundColor: 'rgb(182, 138, 54)',
-              color: "#fff",
-              borderColor: "#B68A36",
-              '& .offer-icon': {
-                color: "#fff", // Change icon color to white on hover
-              },
-            },
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'left',
-            padding: '10px 20px',
-            fontSize: 'clamp(16px, 5vw, 24px)', // Responsive font size
-            textTransform: 'uppercase',
-            fontWeight: '700',
-          }}>
-            <LocalOfferIcon sx={{ color: "#B68A36", fontSize: 40 }} className="offer-icon"/>
-            <span>Redeem kudos</span>
-        </Button>  
-        <div className="grid-item item11">
-            <Typography variant="h6"  sx={{ fontWeight: 'bold',color: '#B68A36' }}>
-            Transactions
-            </Typography>
-            <img src={Transactions} height='100%'></img>
-
         </div>
       </div>
     </div>
