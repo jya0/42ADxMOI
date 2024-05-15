@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/ServiceCard.css";
 
-export default function ServiceCard({name, img}) {
+export default function ServiceCard({ name, img }) {
   return (
     <>
       <div className="service-card">
@@ -10,8 +10,8 @@ export default function ServiceCard({name, img}) {
           <p>{name}</p>
         </div>
         <div className="service-card-body">
-          <a className="service-card-link" href="">start service</a>
-          <a href="">view more</a>
+          <a href="#" className="service-card-link">start service</a>
+          <a href="#">view more</a>
         </div>
       </div>
     </>
