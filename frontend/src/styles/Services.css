@@ -1,3 +1,7 @@
+.service-main {
+  padding-bottom: 20px;
+}
+
 .filter {
   display: flex;
   align-items: center;
