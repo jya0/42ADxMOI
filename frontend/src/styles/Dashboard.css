@@ -6,7 +6,12 @@
     height: auto; /* Adjustable height */
     background-color: #fff;
   }
-  
+  .grid-container-badges{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+  }
   .grid-container {
     display: grid;
     grid-template-columns: repeat(13, 1fr);
@@ -38,10 +43,12 @@
     grid-area: item2;
     display: flex;
     justify-content: left;
+    border-color: #B68A36;
   }
   
   .item3 {
     grid-area: item3;
+    border-color: var(--league-color);
   }
   
   .item4 {
@@ -50,6 +57,9 @@
   }
   
   .item5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-area: item5;
   }
   

@@ -70,7 +70,7 @@ const UserCard = ({ user }) => {
                 color:'#5D5D5D',
               }}
             >
-              <Typography variant="body2" fontSize='13px'>Level</Typography>
+              <Typography variant="body2" fontSize='10px'>Level</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <ThunderIcon
                   sx={{
@@ -79,7 +79,7 @@ const UserCard = ({ user }) => {
                     color: '#B68A36',
                   }}
                 />
-                <Typography variant="body2" fontSize='13px'>
+                <Typography variant="body2" fontSize='10px'>
                   {`${currentXP}/${totalXP} XP`}
                 </Typography>
               </Box>
