@@ -21,7 +21,7 @@ const LeagueCard = ({ league }) => {
       }}
     >
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <ShieldIcon sx={{ fontSize: 30, color: Color }} />
+        <ShieldIcon sx={{ fontSize: 25, color: Color }} />
         <Typography variant="h5" sx={{ fontWeight: 'bold', color: Color }}>
           {name}
         </Typography>
@@ -32,7 +32,7 @@ const LeagueCard = ({ league }) => {
         </Typography>
         </Box>
     </Box>
-    <Typography variant="body2" fontSize='10px' color='#5D5D5D' marginLeft='30px'>
+    <Typography variant="body2" fontSize='10px' color='#5D5D5D' marginLeft='25px'>
         Current League
     </Typography>
     </Box>

@@ -1,6 +1,6 @@
 /* src/styles/Dashboard.css */
 .Dashboard {
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #b6b6b6;
     border-radius: 15px;
     height: auto; /* Adjustable height */
@@ -32,7 +32,18 @@
     border-radius: 15px;
     background-color: #ffffff;
   }
-  
+  .chart-div{
+    padding: 10px 10px 0;
+    height: 100%; 
+  }
+
+  .chart-div > p {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #B68A36;
+  }
+
   /* Define specific grid areas for the items */
   .item1 {
     
@@ -65,11 +76,21 @@
   }
   
   .item6 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
     grid-area: item6;
   }
   
   .item7 {
     grid-area: item7;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
   }
   
   .item8 {
@@ -88,5 +109,11 @@
   }
   
   .item11 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     grid-area: item11;
+    padding-bottom: 10px;
+    padding-top: 10px;
   }

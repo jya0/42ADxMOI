@@ -18,12 +18,12 @@ const CurrentXp = ({ currentXP }) => {
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <ThunderIcon sx={{ fontSize: 30, color: '#B68A36' }} />
+        <ThunderIcon sx={{ fontSize: 25, color: '#B68A36' }} />
         <Typography variant="h5" sx={{ fontWeight: 'bold',color: '#B68A36' }}>
           {currentXP}
         </Typography>
       </Box>
-      <Typography variant="body2" fontSize='10px' color='#5D5D5D' marginLeft='30px'>
+      <Typography variant="body2" fontSize='10px' color='#5D5D5D' marginLeft='25px'>
         Experience Points
       </Typography>
     </Box>
