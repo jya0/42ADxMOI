@@ -1,0 +1,32 @@
+/* src/components/Header.css */
+.App-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+  }
+  
+  .header-img {
+    width: 300px; /* Adjust size as needed */
+    height: auto;
+  }
+  
+  .App-header-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .App-header-text a {
+    text-decoration: none;
+    color: #B68A36;
+    font-size: 16px;
+  }
+  
+  .App-header-text p {
+    margin: 0;
+    font-size: 16px;
+    color: #B68A36;
+  }
+  

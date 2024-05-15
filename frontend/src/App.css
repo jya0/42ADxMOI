@@ -1,7 +1,7 @@
-
-
 .App {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
 }
 
 .App-content {
@@ -11,6 +11,13 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+.mainContainer{
+  width: 80%;
+  background-color: white;
+  justify-content: center;
+
 }
 
 /* .App {
