@@ -66,7 +66,6 @@ def main(llm_model_name: str, embedding_model_name: str, documents_path: str) ->
         except KeyboardInterrupt:
             break
 
-
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run local LLM with RAG with Ollama.")
     parser.add_argument(
@@ -93,3 +92,29 @@ def parse_arguments() -> argparse.Namespace:
 if __name__ == "__main__":
     args = parse_arguments()
     main(args.model, args.embedding_model, args.path)
+
+
+
+# Code to add to be restful
+
+# from flask import Flask, request, jsonify
+
+# @app.route('/get_response', methods=['POST'])
+# def get_response():
+#     try:
+#         user_input = request.json['user_input']
+#         response = chat(user_input, db)
+#         return jsonify({'generated_text': response})
+#     except Exception as e:
+#         print(e)
+#         return jsonify({'error': str(e)}), 500
+
+# @app.route('/get_response', methods=['POST'])
+# def get_response():
+#     try:
+#         user_input = request.json['user_input']
+#         response = chat(user_input, db)
+#         return jsonify({'generated_text': response['answer']})  # Return only the answer
+#     except Exception as e:
+#         print(e)
+#         return jsonify({'error': str(e)}), 500
