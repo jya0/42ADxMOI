@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../styles/Dashboard.css';
 import { Badge, Button, Typography } from '@mui/material';
@@ -27,24 +27,54 @@ import { Link } from "react-router-dom";
 
 function Dashboard() {
   const location = useLocation();
+  const [user, setUser] = useState(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    return storedUser || getDefaultUserData();
+  });
 
-  const user = {
-    name: "Muhammad Al Mansoori",
-    avatarUrl:
-      "https://cdn3d.iconscout.com/3d/premium/thumb/middle-eastern-arab-man-avatar-10971672-8779384.png?f=webp",
-    level: 9,
-    currentXP: 4675,
-    walletPoint: 290000,
-    totalXP: 10000,
-  };
+  // Function to get default user data
+  function getDefaultUserData() {
+    return {
+      name: "Muhammad Al Mansoori",
+      avatarUrl: "https://cdn3d.iconscout.com/3d/premium/thumb/middle-eastern-arab-man-avatar-10971672-8779384.png?f=webp",
+      level: 9,
+      currentXP: 4675,
+      walletPoint: 290000,
+      totalXP: 10000,
+    };
+  }
+
+  useEffect(() => {
+    const isPaymentPage = location.pathname === '/payments';
+    const hasVisitedPaymentsPage = localStorage.getItem("hasVisitedPaymentsPage") === "true";
+
+    if (isPaymentPage && !hasVisitedPaymentsPage) {
+      const updatedUser = { ...user, walletPoint: 300000, totalXP: 12000 };
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      localStorage.setItem("hasVisitedPaymentsPage", "true");
+    } else if (!isPaymentPage && hasVisitedPaymentsPage) {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      setUser(storedUser);
+    } else if (!isPaymentPage && !hasVisitedPaymentsPage) {
+      const defaultUser = getDefaultUserData();
+      setUser(defaultUser);
+      localStorage.setItem("user", JSON.stringify(defaultUser));
+    }
+  }, [location.pathname]);
+
   const league = {
     name: "Platinum",
     Color: "#716991",
     cashback: "5%",
   };
+
   const payments = {
     total: "290",
   };
+
+  
+
 
   const xpData = [
     { name: 'Mon', xp: 500 },
@@ -126,7 +156,7 @@ function Dashboard() {
               <CurrentXp currentXP={user.currentXP} />
         </div>
         <div className="grid-item item3">
-          <LeagueCard league={league} />
+            <LeagueCard league={league} />
         </div>
         <div className="grid-item item7">
           {isProfilePage ? (
