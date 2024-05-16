@@ -5,7 +5,7 @@ const app = express();
 const multer = require('multer')
 const fs = require('fs');
 const OpenAI =  require("openai");
-import axios from 'axios';
+const axios =  require('axios');
 
 require('dotenv').config();
 
