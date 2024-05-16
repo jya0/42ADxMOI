@@ -4,14 +4,14 @@
 </br>
 &emsp;> 42ADxMOI aims to better UX in an all-inclusive way (i.e. for People of Determination) through gamification.
 </br>
-&emsp;> We entered as "Team Kudos", which consisted Mukhammadusmon Ganiev, Faraz Khan and I (Jinxiu Yao).
+&emsp;> We entered as "Team Kudos", the memebers were Mukhammadusmon Ganiev, Faraz Khan, Abdullah Rashidov and I (Jinxiu Yao).
 
 
 ## Description
 
 #### Problems Identified:
-* __There needs to be a better user experience on the website, so users won't feel compelled to call the support centre.__
-* __There needs to be more accessibility support to the People of Determination to ensure the user experience is all-inclusive.__
+* __There needs to be a better user experience provided by the website, so users won't feel compelled to call the support centre.__
+* __There needs to be more accessibility features for the People of Determination to ensure a wholistic UI for everyone.__
 #### Solutions Suggested:
 * _A suite of gamified features using 'Kudos' points and an intelligent realtime AI to help users._
 * _A menu dedicated for People of Determination which allow single tap buttons to dial for help._
@@ -27,29 +27,24 @@
 ### Dependencies
 
 - __OS: MacOS__
-- __Hardware: >=16GB RAM, >=8GB VRAM, >=6 Core CPU__
-- __Tools: Ollama, Nodejs, npm__
+- __Hardware: >=16GB RAM, >=4GB VRAM, >=4 Core CPU__
+- __Tools: Ollama, Nodejs, npm, python, pip__
 
 
-### Installing
+### Starting Frontend
 
 ```
 git pull https://github.com/jya0/42ADxMOI
 cd 42ADxMOI/frontend
 npm install
-```
-
-### Executing program
-
-```
 npm start
 ```
 
-### (DEMO ONLY) (OPTIONAL) Running RAG AI Assistant and Starting backend
+### (DEMO ONLY) (OPTIONAL) Running Locally Hosted RAG AI Assistant and Starting backend
 
 1. [Ollama Install](https://ollama.com/download/mac)
 ```
-cd local_LLM_tests/local-LLM-with-RAG
+cd 42ADxMOI/local_LLM_tests/local-LLM-with-RAG
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -58,7 +53,7 @@ python3 app.py -m tinyllama -p ../moi_pdfs
 
 2. 
 ```
-cd ../backend
+cd 42ADxMOI/backend
 npm install
 npm run start
 ```
@@ -72,4 +67,4 @@ npm run start
 
 ## License
 
-Following this submission, all IP rightfully belongs to MOI UAE.
+Following this submission, all IPs generated in this repo only rightfully belongs to MOI UAE.
