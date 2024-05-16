@@ -3,17 +3,12 @@ const cors = require('cors');
 const app = express();
 
 const multer = require('multer')
-const FormData = require('form-data');
-const {Readable} = require('stream');
-const axios = require('axios');
 const fs = require('fs');
-const path = require('path');
 const OpenAI =  require("openai");
 
 require('dotenv').config();
 
 const openai = new OpenAI({ apiKey: 'sk-proj-m1jylEjGDMeRPSfigtGHT3BlbkFJD1bmeUiRQBcT082c0zAK', dangerouslyAllowBrowser: true });
-const speechFile = path.resolve("./audio.mp3");
 
 const storage = multer.diskStorage({
     destination: 'uploads/',
@@ -25,10 +20,6 @@ const upload = multer({ storage: storage });
 
 app.use(cors());
 app.use(express.json());
-
-const bufferToStream = (buffer) => {
-    return  Readable.from(buffer);
-}
 
 app.get('/', (req, res) => {
     res.send('Welcome to the Speech-to-Text API!');
@@ -47,8 +38,16 @@ app.post('/api/transcribe', upload.single('file'), async (req, res) => {
         model: "whisper-1",
       });
 
+      const promptText = transcription.text;
+
+      const formData = new FormData();
+      formData.append('model', 'whisper-1');
+      formData.append('response_format', 'json');
+      // Call the OpenAI Whisper API to transcribe the audio
+      const response = await axios.post('https://api.openai.com/v1/audio/transcriptions', formData, {});
+
       res.json({ transcription });
-      
+
     } catch (error) {
       console.log(error);
       res.status(500).json({ error: 'Error transcribing audio' });

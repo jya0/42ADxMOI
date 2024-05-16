@@ -8,11 +8,17 @@ from document_loader import load_documents
 import argparse
 import sys
 
+from flask import Flask, request, jsonify
+
 from llm import getChatChain
 
 
 TEXT_SPLITTER = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
 
+app = Flask(__name__)
+
+_llm = None
+_db = None
 
 def load_documents_into_database(model_name: str, documents_path: str) -> Chroma:
     """
@@ -46,25 +52,27 @@ def main(llm_model_name: str, embedding_model_name: str, documents_path: str) ->
 
     # Creating database form documents
     try:
-        db = load_documents_into_database(embedding_model_name, documents_path)
+        _db = load_documents_into_database(embedding_model_name, documents_path)
     except FileNotFoundError as e:
         print(e)
         sys.exit()
 
-    llm = Ollama(model=llm_model_name)
-    chat = getChatChain(llm, db)
+    _llm = Ollama(model=llm_model_name)
+    # chat = getChatChain(llm, db)
 
-    while True:
-        try:
-            user_input = input(
-                "\n\nPlease enter your question (or type 'exit' to end): "
-            )
-            if user_input.lower() == "exit":
-                break
+    # while True:
+    #     try:
+    #         user_input = input(
+    #             "\n\nPlease enter your question (or type 'exit' to end): "
+    #         )
+    #         if user_input.lower() == "exit":
+    #             break
 
-            chat(user_input)
-        except KeyboardInterrupt:
-            break
+    #         result = chat(user_input);
+    #         print('-----------------------')
+    #         print(result)
+    #     except KeyboardInterrupt:
+    #         break
 
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run local LLM with RAG with Ollama.")
@@ -92,28 +100,27 @@ def parse_arguments() -> argparse.Namespace:
 if __name__ == "__main__":
     args = parse_arguments()
     main(args.model, args.embedding_model, args.path)
-
-
+    app.run(debug=True)
 
 # Code to add to be restful
 
-# from flask import Flask, request, jsonify
+@app.route('/get_response', methods=['POST'])
+def get_response():
+    try:
+        user_input = request.json['user_input']
+        chat = getChatChain(_llm, _db)
+        response = chat(user_input, _db)
+        return jsonify({'generated_text': response})
+    except Exception as e:
+        print(e)
+        return jsonify({'error': str(e)}), 500
 
 # @app.route('/get_response', methods=['POST'])
 # def get_response():
 #     try:
 #         user_input = request.json['user_input']
-#         response = chat(user_input, db)
-#         return jsonify({'generated_text': response})
-#     except Exception as e:
-#         print(e)
-#         return jsonify({'error': str(e)}), 500
-
-# @app.route('/get_response', methods=['POST'])
-# def get_response():
-#     try:
-#         user_input = request.json['user_input']
-#         response = chat(user_input, db)
+#         chat = getChatChain(_llm, _db)
+#         response = chat(user_input, _db)
 #         return jsonify({'generated_text': response['answer']})  # Return only the answer
 #     except Exception as e:
 #         print(e)
