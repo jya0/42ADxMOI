@@ -4,6 +4,7 @@ import PaymentIcon from "../images/payment1.svg";
 import Apple from "../images/apple.svg";
 import Visa from "../images/visa.svg";
 import Master from "../images/master.svg";
+import successImage from "../images/SuccessIcon.svg"
 
 function Payment() {
   const [selectedPayment, setSelectedPayment] = useState(null);
@@ -27,7 +28,7 @@ function Payment() {
     { id: 1, name: "Red signal fine", daysLeft: 2, price: "220 AED" },
     { id: 2, name: "Speed limit", daysLeft: 4, price: "200 AED" },
     { id: 3, name: "Red signal fine", daysLeft: 35, price: "250 AED" },
-    { id: 4, name: "Red signal fine", daysLeft: 46, price: "300 AED" },
+    { id: 4, name: "Red signal fine", daysLeft: 70, price: "320 AED" },
   ];
 
   return (
@@ -66,34 +67,16 @@ function Payment() {
         </div>
       </div>
       <div className="payment-method">
-        <h2>Payment</h2>
-        <span className="payment-text">Speed limit fine: </span>
-        <span className="payment-price">220 AED</span>
-        <ul>
-          <li>
-            <button
-              className={selectedPayment === "Apple" ? "selected" : ""}
-              onClick={() => handleSelectPayment("Apple")}
-            >
-              <img src={Apple} alt="Apple payment" />
-            </button>
-          </li>
-          <li>
-            <button
-              className={selectedPayment === "VisaMaster" ? "selected" : ""}
-              onClick={() => handleSelectPayment("VisaMaster")}
-            >
-              <img className="visa" src={Visa} alt="Visa payment" />
-              <img src={Master} alt="Master payment" />
-            </button>
-          </li>
-        </ul>
-        {stepCompleted && (
+        {stepCompleted ? (
           <div className="step-completed">
-            {/* <img src={successImage} alt="Success" /> */}
-            <p className="success">Payment Method Selected!</p>
+            <img src={successImage} alt="Success" />
+            <p className="success">Payment Success!</p>
           </div>
-        )}
+        ):(
+          <>
+          <h2>Payment</h2>
+          <span className="payment-text">Speed limit fine: </span>
+        <span className="payment-price">220 AED</span>
         <ul className="kudos-list">
           <li className="kudos-item">
             <button className="kudos-btn">1k</button>
@@ -117,6 +100,27 @@ function Payment() {
         <p>
           total: <span>170 aed</span>
         </p>
+        </>
+        )}
+        <ul>
+          <li>
+            <button
+              className={selectedPayment === "Apple" ? "selected" : ""}
+              onClick={() => handleSelectPayment("Apple")}
+            >
+              <img src={Apple} alt="Apple payment" />
+            </button>
+          </li>
+          <li>
+            <button
+              className={selectedPayment === "VisaMaster" ? "selected" : ""}
+              onClick={() => handleSelectPayment("VisaMaster")}
+            >
+              <img className="visa" src={Visa} alt="Visa payment" />
+              <img src={Master} alt="Master payment" />
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   );

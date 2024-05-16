@@ -1,5 +1,5 @@
 .payment {
-  padding: 45px 0;
+  padding:0;
 }
 
 .payment-list {
@@ -10,7 +10,16 @@
   justify-content: center;
   border-bottom: 1px solid #b6b6b6;
 }
-
+.kudos-btn{
+  font-weight: bold;
+  color:#b6b6b6 ;
+  border:1px solid #b6b6b6 !important;
+}
+.kudos-btn:hover{
+  font-weight: bold;
+  color:#b68a36 ;
+  border:1px solid #b68a36 !important;
+}
 .price-name {
   min-width: 140px;
 }
@@ -39,7 +48,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  border: 2px solid #b6b6b6;
+  border: 1px solid #b6b6b6;
 }
 
 .payment-list > div > ul > li:last-child {
@@ -80,8 +89,8 @@
 }
 
 .payment-list > div > ul > li.selected {
-  border-color: #f4bc2d;
-  border-width: 2px;
+  border-color: #b68a36;
+  border-width: 1px;
   border-style: solid;
 }
 
@@ -90,6 +99,7 @@
   color: #b68a36;
   font-size: 22px;
   border-bottom: 1px solid #b6b6b6;
+  padding-top: 20px;
 }
 
 .payment-method > ul {
@@ -128,9 +138,9 @@
 }
 
 .kudos-btn.active {
-  background-color: #b68a36;
-  color: #fff;
-  border: transparent;
+  font-weight: bold;
+  color:#b68a36 ;
+  border:1px solid #b68a36 !important;
 }
 
 .payment-method > p {
