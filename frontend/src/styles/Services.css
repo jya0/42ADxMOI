@@ -1,0 +1,19 @@
+.service-main {
+  padding-bottom: 20px;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 30px;
+  text-transform: capitalize;
+}
+
+.filter > select {
+  margin-left: 15px;
+  padding: 8px 4px;
+  border-radius: 12px;
+  border: 1px solid #b6b6b6;
+  outline: none;
+}
