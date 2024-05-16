@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Ministry of Interior - Under maintenance</title>
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge'>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="description" content=""/>
+	<meta name="author" content="Ministry of Interior"/>
+    <meta name="robots" content="index,follow" />
+    <meta name="revisit-after" content="7 days" />
+    <link rel="shortcut icon" href='~/favicon.ico' />    
+    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin' />
+    
+    <style type="text/css">
+    
+    body{  max-width: 960px;box-shadow: 0 0 5px #ccc;margin-left: auto; margin-right: auto;color: #333; font-size: 13px;   line-height: 1.6;background-color: #fff;
+           font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+    
+    .header {background:url('en/images/top_bg.jpg') no-repeat;width: 100%; border-bottom: 2px solid #eee; position: relative;}    
+       
+    a.logo {clear: both; display: table-cell; height: 100%;width: 100%;}
+    .header .logo img {margin:10px 5px 30px 30px; float: left;} 
+    .header .logo .slogan {color: #b89207; float: left; font-size: 25px;  font-weight: 700;  margin-left: 20px;   }
+    
+    .row-copyright {border-top: 1px solid #ccc; clear: both;  margin: 20px auto 0px;  width: 100%;}
+    .row-copyright p {font-size: 11px;  padding: 5px 0;  text-align: center;}
+    .content {font-size: 30px;padding: 30px; text-align: center;}
+    @media (max-width: 440px) 
+    {
+     a.logo {text-align:center;display: table;}
+     .header .logo img {margin:10px 0px 0px 0px; float: none;} 
+     .header .logo .slogan {float:none; font-size: 20px;margin:0px;   }
+    }   
+    
+      
+        .style1
+        {
+            width: 105px;
+        }
+        .style2
+        {
+            width: 300px; text-align:center;padding-left:175px;
+			
+        }
+        .style3
+        {
+            width: 307px;
+        }
+   
+
+    </style>
+     <script type="text/javascript" src="reportError/jquery.min.js" > </script>
+     <script type="text/javascript" src="reportError/fancybox/jquery.fancybox.pack.js" > </script>
+     <script type="text/javascript" src="reportError/fancybox/fancybox.js" > </script>
+     <link rel="stylesheet" href="reportError/fancybox/jquery.fancybox.css" type="text/css" media="all" />
+     
+
+    <script language="javascript" type="text/javascript" >
+
+        function closeFancybox() {
+            $.fancybox.close();         
+        }
+
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        function SendErrorPopup() {
+
+            var errorURL = "reporterror/reporterror.htm?source_url=" + getParameterByName('source_url') + "&exception=" + getParameterByName('exception');
+          //  var errorpop = window.open(errorURL, 'errorpop', "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+
+
+                jQuery.fancybox({
+                    openEffect: 'none', closeEffect: 'none', width: '60%', type: 'iframe', arrows: false,
+                    closeBtn: true, href: errorURL,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () { // wait for frame to load and then gets it's height
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 30);
+                        });
+                    }
+                }); 
+        }
+    </script>
+</head>
+<body>
+
+<div style="font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-size:14px; color:#333; padding:40px 10px;">
+<center>
+<div style="margin:0 auto 15px auto;width:700px !important;">
+<p><a href="https://www.moi.gov.ae">
+<img src="https://www.moi.gov.ae/email_templates/email_header.png"  border="0" alt="_" /></a></p>
+</div>
+
+<div style=" margin:auto;  width:700px !important; padding:20px 30px; border-radius:5px; border:1px dotted #aaa">
+
+<table width="100%" border="0" cellpadding="10" cellspacing="0" style="font-size:14px" role="presentation">
+  <tr>
+				<td class="style3">
+					<strong>Dear Visitor </strong>&nbsp;<br />
+					Some unexpected error has landed on you on this page. You may try for <a href="https://www.moi.gov.ae/en/" ><strong>HOME PAGE </strong></a>again or let us know about this error by <a href="javascript:SendErrorPopup();">clicking here</a><br /> Thank You.
+					
+				</td>
+                <td>
+                &nbsp;					
+				</td>
+                <td style="text-align:right;direction:rtl;">
+					<strong>عزيزي الزائر </strong>&nbsp;<br />
+        حدث خطأ غير متوقع عند تصفحك لهذه الصفحة. يمكنك محاولة الصفحة الرئيسية مرة أخرى أو السماح لنا أن نعرف عن هذا الخطأ عن طريق,<a href="javascript:SendErrorPopup();">النقر هنا</a> <br />
+شكرا جزيلا
+                    </td>
+
+			</tr>	
+            <tr>
+				<td class="style3">
+					You may contact us on this number <a href="tel:8005000">8005000</a>
+                    <br />
+                    or by email <a href="mailto:moi@moi.gov.ae">moi@moi.gov.ae</a>
+
+					
+				</td>
+                <td>
+                &nbsp;					
+				</td>
+                <td style="text-align:right;direction:rtl;">
+                للمساعدة اتصل بنا على الرقم <a href="tel:8005000">8005000</a> <br />
+أو على البريد اللإلكتروني <span dir="ltr"><a href="mailto:moi@moi.gov.ae"   >moi@moi.gov.ae</a></span>
+
+					</td>
+
+			</tr>		
+</table>
+<table width="100%" border="0" cellpadding="10" cellspacing="0" style="font-size:14px" role="presentation">
+  <tr>
+  <td class="style1">Follow us on </td>
+ <td class="style2" align="center">
+  <a href="https://www.facebook.com/moiuae" target="_blank" style="float:left;margin-right:5px; height: 33px; width: 28px; display: block;" ><img src="https://www.moi.gov.ae/en/images/icons/social/facebook_icon.png" alt="facebook"/></a>
+  <a href="https://twitter.com/moiuae" target="_blank" style="float:left;margin-right:5px;height: 33px; width: 28px; display: block; "><img src="https://www.moi.gov.ae/en/images/icons/social/twitter_icon.png" alt="twitter"/> </a>
+  <a href="http://www.youtube.com/user/theabudhabipolice" target="_blank"  style="float:left;margin-right:5px;height: 33px; width: 28px; display: block;"><img src="https://www.moi.gov.ae/en/images/icons/social/youtube_icon.png" alt="youtube"/> </a>
+  <a href="http://instagram.com/moiuae" target="_blank" style="float:left;margin-right:5px;height: 33px; width: 28px; display: block;" > <img src="https://www.moi.gov.ae/en/images/icons/social/instagram_icon.png" alt="instagram"/></a>
+  </td>
+  <td style="text-align:right;direction:rtl;">تابعونا على  </td>
+  </tr>
+  </table>
+
+  <table width="100%" border="0" cellpadding="10" cellspacing="0" style="font-size:14px" role="presentation">
+  <tr>
+				<td>
+					Our Vision: To have the UAE as one of the most secure and safest countries in the world.
+				</td>
+                <td>
+                &nbsp;					
+				</td>
+                <td style="text-align:right;direction:rtl;">
+					رؤيتنا: أن تكون دولة الامارات العربية المتحدة من أفضل دول العالم أمنا وسلامة.</td>
+
+			</tr>	
+            </table>
+<p>&nbsp;</p>
+</div>
+
+<div style="margin:0 auto 20px auto; width:700px !important;padding:10px; font-size:12px">
+<p><br />
+ <a href="https://www.moi.gov.ae" title="#websitePageTitle#" target="_blank" style="text-decoration:none; color:#C6B13A">COPYRIGHT © 2024 - MINISTRY OF INTERIOR, All rights reserved.</a></p>
+</div>
+</center>
+</div>
