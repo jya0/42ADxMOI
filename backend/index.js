@@ -41,12 +41,10 @@ app.post('/api/transcribe', upload.single('file'), async (req, res) => {
       const promptText = transcription.text;
 
       const formData = new FormData();
-      formData.append('model', 'whisper-1');
-      formData.append('response_format', 'json');
-      // Call the OpenAI Whisper API to transcribe the audio
-      const response = await axios.post('https://api.openai.com/v1/audio/transcriptions', formData, {});
+      formData.append('user_input', `${promptText}`);
+      const response = await axios.post('http://127.0.0.1:5000/get_response', formData, {});
 
-      res.json({ transcription });
+      res.json({ response });
 
     } catch (error) {
       console.log(error);

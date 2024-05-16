@@ -26,34 +26,49 @@
 
 ### Dependencies
 
+- __OS: MacOS__
+- __Hardware: >=16GB RAM, >=8GB VRAM, >=6 Core CPU__
+- __Tools: Ollama, Nodejs, npm__
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+```
+git pull https://github.com/jya0/42ADxMOI
+cd 42ADxMOI/frontend
+npm install
+```
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
 ```
-code blocks for commands
+npm start
 ```
 
-## Help
+### (DEMO ONLY) (OPTIONAL) Running RAG AI Assistant and Starting backend
 
-Any advise for common problems or issues.
+1. [Ollama Install](https://ollama.com/download/mac)
 ```
-command to run if program contains helper info
+cd local_LLM_tests/local-LLM-with-RAG
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python3 app.py -m tinyllama -p ../moi_pdfs
 ```
+
+2. 
+```
+cd ../backend
+npm install
+npm run start
+```
+
 
 ## Authors
-- [Mukhammadusman Ganiev](https://github.com/muhammadganiev)
+- [Mukhammadusmon Ganiev](https://github.com/muhammadganiev)
 - [Faraz Khan](https://github.com/Faraz7704)
 - [Jinxiu Yao](https://github.com/jya0)
+- [Abdullah Rashidov](https://github.com/Rashidov01)
 
 ## License
 

@@ -9,6 +9,7 @@ import argparse
 import sys
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 from llm import getChatChain
 
@@ -16,9 +17,7 @@ from llm import getChatChain
 TEXT_SPLITTER = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
 
 app = Flask(__name__)
-
-_llm = None
-_db = None
+CORS(app)
 
 def load_documents_into_database(model_name: str, documents_path: str) -> Chroma:
     """
@@ -40,24 +39,40 @@ def load_documents_into_database(model_name: str, documents_path: str) -> Chroma
     )
     return db
 
+check_if_model_is_available("tinyllama")
+check_if_model_is_available("nomic-embed-text")
+_db = load_documents_into_database("nomic-embed-text", "../moi_pdfs")
+_llm = Ollama(model="tinyllama")
 
-def main(llm_model_name: str, embedding_model_name: str, documents_path: str) -> None:
-    # Check to see if the models available, if not attempt to pull them
+@app.route('/get_response', methods=['POST'])
+def get_response():
     try:
-        check_if_model_is_available(llm_model_name)
-        check_if_model_is_available(embedding_model_name)
+        user_input = request.json['user_input']
+        chat = getChatChain(_llm, _db)
+        response = chat(user_input)
+        return jsonify({'text': response})
     except Exception as e:
         print(e)
-        sys.exit()
+        return jsonify({'error': str(e)}), 500
 
-    # Creating database form documents
-    try:
-        _db = load_documents_into_database(embedding_model_name, documents_path)
-    except FileNotFoundError as e:
-        print(e)
-        sys.exit()
 
-    _llm = Ollama(model=llm_model_name)
+# def main(llm_model_name: str, embedding_model_name: str, documents_path: str) -> None:
+#     # Check to see if the models available, if not attempt to pull them
+#     try:
+#         check_if_model_is_available(llm_model_name)
+#         check_if_model_is_available(embedding_model_name)
+#     except Exception as e:
+#         print(e)
+#         sys.exit()
+
+#     # Creating database form documents
+#     try:
+#         _db = load_documents_into_database(embedding_model_name, documents_path)
+#     except FileNotFoundError as e:
+#         print(e)
+#         sys.exit()
+
+#     _llm = Ollama(model=llm_model_name)
     # chat = getChatChain(llm, db)
 
     # while True:
@@ -74,46 +89,35 @@ def main(llm_model_name: str, embedding_model_name: str, documents_path: str) ->
     #     except KeyboardInterrupt:
     #         break
 
-def parse_arguments() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run local LLM with RAG with Ollama.")
-    parser.add_argument(
-        "-m",
-        "--model",
-        default="mistral",
-        help="The name of the LLM model to use.",
-    )
-    parser.add_argument(
-        "-e",
-        "--embedding_model",
-        default="nomic-embed-text",
-        help="The name of the embedding model to use.",
-    )
-    parser.add_argument(
-        "-p",
-        "--path",
-        default="Research",
-        help="The path to the directory containing documents to load.",
-    )
-    return parser.parse_args()
+# def parse_arguments() -> argparse.Namespace:
+#     parser = argparse.ArgumentParser(description="Run local LLM with RAG with Ollama.")
+#     parser.add_argument(
+#         "-m",
+#         "--model",
+#         default="mistral",
+#         help="The name of the LLM model to use.",
+#     )
+#     parser.add_argument(
+#         "-e",
+#         "--embedding_model",
+#         default="nomic-embed-text",
+#         help="The name of the embedding model to use.",
+#     )
+#     parser.add_argument(
+#         "-p",
+#         "--path",
+#         default="Research",
+#         help="The path to the directory containing documents to load.",
+#     )
+#     return parser.parse_args()
 
 
 if __name__ == "__main__":
-    args = parse_arguments()
-    main(args.model, args.embedding_model, args.path)
+    # args = parse_arguments()
+    # main(args.model, args.embedding_model, args.path)
     app.run(debug=True)
 
 # Code to add to be restful
-
-@app.route('/get_response', methods=['POST'])
-def get_response():
-    try:
-        user_input = request.json['user_input']
-        chat = getChatChain(_llm, _db)
-        response = chat(user_input, _db)
-        return jsonify({'generated_text': response})
-    except Exception as e:
-        print(e)
-        return jsonify({'error': str(e)}), 500
 
 # @app.route('/get_response', methods=['POST'])
 # def get_response():
