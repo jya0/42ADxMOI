@@ -6,6 +6,7 @@ import Header from "./components/Header.js";
 import Home from "./pages/Home.js";
 import Profile from "./pages/Profile.js";
 import Payment from "./pages/Payment.js";
+import Audio from "./pages/Audio.js";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/audio" element={<Audio />} />
             <Route path="/payments" element={<Payment />} />
           </Routes>
         </BrowserRouter>

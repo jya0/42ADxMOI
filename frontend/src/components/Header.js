@@ -15,6 +15,8 @@ function Header() {
         <p>|</p>
         <Link to="/profile">Profile</Link>
         <p>|</p>
+        <Link to="/audio">Voice Commander</Link>
+        <p>|</p>
         <a href="/">Sign Out</a> {/* If this is a sign-out link, you may not need to use React Router */}
       </Stack>
       <img src={rightHeader} className="header-img" alt="info" />

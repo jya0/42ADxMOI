@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import OpenAI from "openai";
+import "../styles/audio.css"
 
 const mimeType = "audio/webm";
 
@@ -122,16 +123,15 @@ const AudioRecorder = () => {
 	return (
 		<div>
 			{getMicrophonePermission}
-			<h2>Audio Recorder</h2>
 			<main>
 				<div className="audio-controls">
 					{permission && recordingStatus === "inactive" ? (
-						<button onClick={startRecording} type="button">
+						<button className="audio-btn" onClick={startRecording} type="button">
 							Start Recording
 						</button>
 					) : null}
 					{recordingStatus === "recording" ? (
-						<button onClick={stopRecording} type="button">
+						<button className="audio-btn" onClick={stopRecording} type="button">
 							Stop Recording
 						</button>
 					) : null}
@@ -139,10 +139,6 @@ const AudioRecorder = () => {
 				{audio ? (
 					<div className="audio-player">
 						<audio src={audio} controls></audio>
-						{/* <ReactPlayer url={audio} controls /> */}
-						<a download href={audio}>
-							Download Recording
-						</a>
 					</div>
 				) : null}
 			</main>
