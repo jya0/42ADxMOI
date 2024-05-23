@@ -34,7 +34,7 @@
 ### Starting Frontend
 
 ```
-git pull https://github.com/jya0/42ADxMOI
+git clone https://github.com/jya0/42ADxMOI
 cd 42ADxMOI/frontend
 npm install
 npm start
